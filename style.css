@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+:root {
+    --progress: 11%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: "Poppins", serif;
+    font-weight: 800;
+    font-style: normal;
+
+    /* border: black solid 1px; */
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #2C6D9A;
+}
+
+.liquid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.liquid h1 {
+    position: absolute;
+    margin-top: -100px;
+    font-size: clamp(100px, 15vw, 300px);
+    line-height: 1;
+}
+
+.liquid h1:nth-child(1) {
+    color: rgba(255, 255, 255, 0.692);
+    text-shadow:
+        -2px 2px 0px #2C6D9A,
+        -10px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.liquid h1:nth-child(2) {
+    color: #2196F3;
+    opacity: 0.5;
+    animation: wave 2s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.liquid h1:nth-child(3) {
+    color: #2196F3;
+    opacity: 0.75;
+    animation: wave 2s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.liquid h1:nth-child(4) {
+    color: #2196F3;
+    opacity: 1;
+    animation: wave 2s ease-in-out infinite;
+    animation-delay: 4s;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        clip-path: polygon(
+                0% calc(100% - var(--progress, 50%)),
+                5% calc(102% - var(--progress, 50%)),
+                10% calc(104% - var(--progress, 50%)),
+                15% calc(102% - var(--progress, 50%)),
+                20% calc(100% - var(--progress, 50%)),
+                25% calc(102% - var(--progress, 50%)),
+                30% calc(104% - var(--progress, 50%)),
+                35% calc(102% - var(--progress, 50%)),
+                40% calc(100% - var(--progress, 50%)),
+                45% calc(102% - var(--progress, 50%)),
+                50% calc(104% - var(--progress, 50%)),
+                55% calc(102% - var(--progress, 50%)),
+                60% calc(100% - var(--progress, 50%)),
+                65% calc(102% - var(--progress, 50%)),
+                70% calc(104% - var(--progress, 50%)),
+                75% calc(102% - var(--progress, 50%)),
+                80% calc(100% - var(--progress, 50%)),
+                85% calc(102% - var(--progress, 50%)),
+                90% calc(104% - var(--progress, 50%)),
+                95% calc(102% - var(--progress, 50%)),
+                100% calc(100% - var(--progress, 50%)),
+                100% 100%,
+                0% 100%);
+    }
+
+    50% {
+        clip-path: polygon(
+                0% calc(97% - var(--progress, 50%)),
+                7% calc(99% - var(--progress, 50%)),
+                12% calc(101% - var(--progress, 50%)),
+                17% calc(99% - var(--progress, 50%)),
+                22% calc(97% - var(--progress, 50%)),
+                27% calc(99% - var(--progress, 50%)),
+                32% calc(101% - var(--progress, 50%)),
+                37% calc(99% - var(--progress, 50%)),
+                42% calc(97% - var(--progress, 50%)),
+                47% calc(99% - var(--progress, 50%)),
+                52% calc(101% - var(--progress, 50%)),
+                57% calc(99% - var(--progress, 50%)),
+                62% calc(97% - var(--progress, 50%)),
+                67% calc(99% - var(--progress, 50%)),
+                72% calc(101% - var(--progress, 50%)),
+                77% calc(99% - var(--progress, 50%)),
+                82% calc(97% - var(--progress, 50%)),
+                87% calc(99% - var(--progress, 50%)),
+                92% calc(101% - var(--progress, 50%)),
+                97% calc(99% - var(--progress, 50%)),
+                100% calc(97% - var(--progress, 50%)),
+                100% 100%,
+                0% 100%);
+    }
+}
+
+
+.range-display {
+    width: 300px;
+    margin-top: clamp(50px, 20vw, 200px);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: 
+    "range range"
+    "value max";
+
+    z-index: 1;
+}
+
+#range {
+    grid-area: range;
+    padding: 5px 0px;
+    
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+    overflow: hidden;
+}
+
+#range:hover {
+    opacity: 1;
+}
+
+#range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    border: 2px solid #04AA6D;
+    box-shadow: -400px 0 0 400px #05d68a;
+    cursor: pointer;
+}
+
+#range::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    border: 2px solid #04AA6D;
+    box-shadow: -400px 0 0 400px #05d68a;
+    cursor: pointer;
+}
+
+#value {
+    grid-area: value;
+}
+
+#max {
+    grid-area: max;
+    text-align: right;
+}
